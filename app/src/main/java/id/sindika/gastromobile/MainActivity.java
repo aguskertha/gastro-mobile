@@ -152,6 +152,9 @@ public class MainActivity extends AppCompatActivity implements PredictListener {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==REQUEST_OPEN_GALLERY){
             Uri uri = data.getData();
+            Glide.with(binding.imgFoodActual.getContext())
+                    .load(uri)
+                    .into(binding.imgFoodActual);
             try {
                 String base64 = convertToBase64(uri);
                 PredictDTO predictDTO = new PredictDTO(base64);
@@ -165,6 +168,10 @@ public class MainActivity extends AppCompatActivity implements PredictListener {
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, new ByteArrayOutputStream());
             String path = MediaStore.Images.Media.insertImage(this.getContentResolver(), bitmap, "Title", null);
             Uri uri = Uri.parse(path);
+            Glide.with(binding.imgFoodActual.getContext())
+                    .load(uri)
+                    .into(binding.imgFoodActual);
+
             try {
                 String base64 = convertToBase64(uri);
                 PredictDTO predictDTO = new PredictDTO(base64);
@@ -199,9 +206,9 @@ public class MainActivity extends AppCompatActivity implements PredictListener {
     public void onPredictImage(Food food) {
         float predict =(Float.parseFloat(food.getBase64())*100);
         binding.tvFoodName.setText(food.getName()+" - "+new DecimalFormat("##.##").format(predict)+"%");
-        Glide.with(binding.imgFood.getContext())
+        Glide.with(binding.imgFoodPredict.getContext())
                 .load(APIConfig.BASE_IMAGE_URL+food.getPicture() )
-                .into(binding.imgFood);
+                .into(binding.imgFoodPredict);
         Toast.makeText(binding.getRoot().getContext(), food.getName(), Toast.LENGTH_SHORT);
     }
 }
