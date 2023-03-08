@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ResultPredict.ResultPredictActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_result_food"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:background="@color/white"
+        android:theme="@style/ThemeOverlay.AppCompat.Light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Result Predict"
+        app:titleTextAppearance="@style/TextAppearance.App.Subtitle1"
+        app:titleTextColor="@color/primary_dark" />
+
+    <Button
+        android:id="@+id/btn_food_detail2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#F05C35"
+        android:paddingLeft="4dp"
+        android:paddingTop="2dp"
+        android:paddingRight="4dp"
+        android:paddingBottom="2dp"
+        android:text="Start Gastronomy"
+        android:textAllCaps="false"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tv_result_food_description"
+        app:layout_constraintStart_toStartOf="@+id/tv_result_food_description"
+        app:layout_constraintTop_toBottomOf="@+id/tv_result_food_description" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_result_predict"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:civ_border_color="#FF000000"
+        app:civ_border_width="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_result_food" />
+
+    <TextView
+        android:id="@+id/tv_result_food_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Food Name"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="@+id/img_result_predict"
+        app:layout_constraintStart_toStartOf="@+id/img_result_predict"
+        app:layout_constraintTop_toBottomOf="@+id/img_result_predict" />
+
+    <TextView
+        android:id="@+id/tv_result_food_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/nunito_semibold"
+        android:lineSpacingExtra="5dp"
+        android:maxLines="5"
+        android:text="-"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/img_result_predict"
+        app:layout_constraintStart_toStartOf="@+id/img_result_predict"
+        app:layout_constraintTop_toBottomOf="@+id/tv_result_food_name" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

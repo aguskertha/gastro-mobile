@@ -27,7 +27,7 @@ public class LoadingDialog {
             public void run() {
                 dismissLoadingDialog();
             }
-        }, 4000L);
+        }, 20000L);
     }
 
     public void dismissLoadingDialog(){

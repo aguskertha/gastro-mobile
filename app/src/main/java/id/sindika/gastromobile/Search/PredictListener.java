@@ -1,4 +1,4 @@
-package id.sindika.gastromobile.Listeners;
+package id.sindika.gastromobile.Search;
 
 import id.sindika.gastromobile.Models.Food;
 
