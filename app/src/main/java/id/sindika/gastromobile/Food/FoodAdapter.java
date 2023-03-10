@@ -1,5 +1,6 @@
 package id.sindika.gastromobile.Food;
 
+import android.content.Intent;
 import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import java.util.List;
 import id.sindika.gastromobile.API.APIConfig;
 import id.sindika.gastromobile.Models.Food;
 import id.sindika.gastromobile.R;
+import id.sindika.gastromobile.Utils.StorageConstStatus;
 
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder> {
 
@@ -45,7 +47,9 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         holder.btnFoodDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(view.getContext(), FoodDetailActivity.class);
+                intent.putExtra(StorageConstStatus.EXTRA_FOOD_ID, food.getId());
+                view.getContext().startActivity(intent);
             }
         });
     }

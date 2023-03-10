@@ -31,6 +31,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 import id.sindika.gastromobile.Food.FoodRepository;
+import id.sindika.gastromobile.MainActivity;
 import id.sindika.gastromobile.Models.Food;
 import id.sindika.gastromobile.Models.Request.PredictDTO;
 import id.sindika.gastromobile.ResultPredict.ResultPredictActivity;
@@ -65,6 +66,13 @@ public class SearchFragment extends Fragment implements PredictListener {
             @Override
             public void onClick(View view) {
                 askPermissionGallery();
+            }
+        });
+
+        binding.imgBtnCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                askPermissionCamera();
             }
         });
 
@@ -165,25 +173,36 @@ public class SearchFragment extends Fragment implements PredictListener {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==REQUEST_OPEN_GALLERY){
-            Uri uri = data.getData();
             try {
-                String base64 = convertToBase64(uri);
-                PredictDTO predictDTO = new PredictDTO(base64);
-                PredictRepository.predictImage(binding.getRoot(), predictDTO, this::onPredictImage);
+                if(data != null){
+                    Uri uri = data.getData();
+                    String base64 = convertToBase64(uri);
+                    PredictDTO predictDTO = new PredictDTO(base64);
+                    PredictRepository.predictImage(binding.getRoot(), predictDTO, this::onPredictImage);
+                } else {
+                    movePreviousPage();
+                }
+
+
             } catch (FileNotFoundException e) {
                 Toast.makeText(getContext(), "File not found!", Toast.LENGTH_SHORT);
             }
         }
         else if(requestCode==REQUEST_OPEN_CAMERA){
-            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, new ByteArrayOutputStream());
-            String path = MediaStore.Images.Media.insertImage(getContext().getContentResolver(), bitmap, "Title", null);
-            Uri uri = Uri.parse(path);
 
             try {
-                String base64 = convertToBase64(uri);
-                PredictDTO predictDTO = new PredictDTO(base64);
-                FoodRepository.predictImage(binding.getRoot(), predictDTO, this::onPredictImage);
+                if(data != null){
+                    Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, new ByteArrayOutputStream());
+                    String path = MediaStore.Images.Media.insertImage(getContext().getContentResolver(), bitmap, "Title", null);
+                    Uri uri = Uri.parse(path);
+                    String base64 = convertToBase64(uri);
+                    PredictDTO predictDTO = new PredictDTO(base64);
+                    FoodRepository.predictImage(binding.getRoot(), predictDTO, this::onPredictImage);
+
+                } else {
+                    movePreviousPage();
+                }
             } catch (FileNotFoundException e) {
                 Toast.makeText(getContext(), "File not found!", Toast.LENGTH_SHORT);
             }
@@ -216,6 +235,12 @@ public class SearchFragment extends Fragment implements PredictListener {
         Bundle bundle = new Bundle();
         bundle.putParcelable(StorageConstStatus.EXTRA_FOOD, food);
         intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    private void movePreviousPage(){
+        Intent intent = new Intent(binding.getRoot().getContext(), MainActivity.class);
+        intent.putExtra(StorageConstStatus.EXTRA_NAVIGATION, StorageConstStatus.EXTRA_SEARCH_FRAGMENT);
         startActivity(intent);
     }
 

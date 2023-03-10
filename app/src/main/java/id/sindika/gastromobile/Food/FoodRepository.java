@@ -76,5 +76,35 @@ public class FoodRepository {
 
     }
 
+    public static void getFood(View view, FoodDetailListener foodDetailListener, String foodId, int detailCode)
+    {
+        LoadingDialog loadingDialog = new LoadingDialog((Activity) view.getContext());
+        loadingDialog.startLoadingDialog();
+        Call<Food> callFood = APIConfig.getApiService().getFood(foodId, detailCode);
+        callFood.enqueue(new Callback<Food>() {
+            @Override
+            public void onResponse(Call<Food> call, Response<Food> response) {
+                if(response.isSuccessful())
+                {
+                    Food food = response.body();
+                    foodDetailListener.onGetFood(food);
+                    loadingDialog.dismissLoadingDialog();
+                }
+                else
+                {
+                    loadingDialog.dismissLoadingDialog();
+                    Toast.makeText(view.getContext(), "Food not found!", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Food> call, Throwable t) {
+                loadingDialog.dismissLoadingDialog();
+                Toast.makeText(view.getContext(), "FAIL API: "+t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
 
 }

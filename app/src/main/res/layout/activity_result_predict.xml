@@ -24,7 +24,7 @@
         app:titleTextColor="@color/primary_dark" />
 
     <Button
-        android:id="@+id/btn_food_detail2"
+        android:id="@+id/btn_start_gastronomy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"

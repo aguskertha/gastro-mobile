@@ -8,6 +8,8 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface APIService {
 
@@ -16,5 +18,8 @@ public interface APIService {
 
     @GET("food")
     Call<List<Food>> getFoods();
+
+    @GET("food/{foodId}")
+    Call<Food> getFood(@Path("foodId") String foodId, @Query("detail") int detailCode);
 
 }
