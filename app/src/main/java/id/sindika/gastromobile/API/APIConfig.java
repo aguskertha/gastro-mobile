@@ -16,8 +16,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class APIConfig {
-    public static final String BASE_URL = "http://192.168.192.195:5004/";
-    public static final String BASE_IMAGE_URL = "http://192.168.192.195:5004";
+    public static final String BASE_URL = "http://192.168.195.195:5004/";
+    public static final String BASE_IMAGE_URL = "http://192.168.195.195:5004";
     static OkHttpClient client;
     public static Retrofit retrofit;
     public static APIService getApiService() {

@@ -2,6 +2,7 @@ package id.sindika.gastromobile.ResultPredict;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -37,9 +38,10 @@ public class ResultPredictActivity extends AppCompatActivity {
         if(food == null)
         {
             Toast.makeText(binding.getRoot().getContext(), "Food not found!", Toast.LENGTH_LONG).show();
+            ActivityOptions options = ActivityOptions.makeCustomAnimation(binding.getRoot().getContext(), R.anim.slide_in_left, R.anim.slide_out_right);
             Intent intent = new Intent(binding.getRoot().getContext(), MainActivity.class);
             intent.putExtra(StorageConstStatus.EXTRA_NAVIGATION, StorageConstStatus.EXTRA_SEARCH_FRAGMENT);
-            startActivity(intent);
+            startActivity(intent, options.toBundle());
         }
 
         fillData();
@@ -47,9 +49,10 @@ public class ResultPredictActivity extends AppCompatActivity {
         binding.btnStartGastronomy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ActivityOptions options = ActivityOptions.makeCustomAnimation(binding.getRoot().getContext(), R.anim.slide_in_left, R.anim.slide_out_right);
                 Intent intent = new Intent(binding.getRoot().getContext(), FoodDetailActivity.class);
                 intent.putExtra(StorageConstStatus.EXTRA_FOOD_ID, food.getId());
-                startActivity(intent);
+                startActivity(intent, options.toBundle());
             }
         });
 

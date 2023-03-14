@@ -1,6 +1,7 @@
 package id.sindika.gastromobile.Search;
 
 import android.Manifest;
+import android.app.ActivityOptions;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -34,6 +35,7 @@ import id.sindika.gastromobile.Food.FoodRepository;
 import id.sindika.gastromobile.MainActivity;
 import id.sindika.gastromobile.Models.Food;
 import id.sindika.gastromobile.Models.Request.PredictDTO;
+import id.sindika.gastromobile.R;
 import id.sindika.gastromobile.ResultPredict.ResultPredictActivity;
 import id.sindika.gastromobile.Utils.StorageConstStatus;
 import id.sindika.gastromobile.databinding.FragmentSearchBinding;
@@ -231,17 +233,19 @@ public class SearchFragment extends Fragment implements PredictListener {
 
     @Override
     public void onPredictImage(Food food) {
+        ActivityOptions options = ActivityOptions.makeCustomAnimation(binding.getRoot().getContext(), R.anim.slide_in_left, R.anim.slide_out_right);
         Intent intent = new Intent(getContext(), ResultPredictActivity.class);
         Bundle bundle = new Bundle();
         bundle.putParcelable(StorageConstStatus.EXTRA_FOOD, food);
         intent.putExtras(bundle);
-        startActivity(intent);
+        startActivity(intent, options.toBundle());
     }
 
     private void movePreviousPage(){
+        ActivityOptions options = ActivityOptions.makeCustomAnimation(binding.getRoot().getContext(), R.anim.slide_in_left, R.anim.slide_out_right);
         Intent intent = new Intent(binding.getRoot().getContext(), MainActivity.class);
         intent.putExtra(StorageConstStatus.EXTRA_NAVIGATION, StorageConstStatus.EXTRA_SEARCH_FRAGMENT);
-        startActivity(intent);
+        startActivity(intent, options.toBundle());
     }
 
 }

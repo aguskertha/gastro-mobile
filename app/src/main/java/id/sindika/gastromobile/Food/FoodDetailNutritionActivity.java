@@ -2,8 +2,6 @@ package id.sindika.gastromobile.Food;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
@@ -16,18 +14,18 @@ import id.sindika.gastromobile.MainActivity;
 import id.sindika.gastromobile.Models.Food;
 import id.sindika.gastromobile.R;
 import id.sindika.gastromobile.Utils.StorageConstStatus;
-import id.sindika.gastromobile.databinding.ActivityFoodDetailBinding;
-import id.sindika.gastromobile.databinding.ActivityResultPredictBinding;
+import id.sindika.gastromobile.databinding.ActivityFoodDetailMakeBinding;
+import id.sindika.gastromobile.databinding.ActivityFoodDetailNutritionBinding;
 
-public class FoodDetailActivity extends AppCompatActivity implements FoodDetailListener{
+public class FoodDetailNutritionActivity extends AppCompatActivity implements FoodDetailListener {
 
-    private ActivityFoodDetailBinding binding;
+    private ActivityFoodDetailNutritionBinding binding;
     private String foodId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityFoodDetailBinding.inflate(getLayoutInflater());
+        binding = ActivityFoodDetailNutritionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         setToolbar();
@@ -44,12 +42,12 @@ public class FoodDetailActivity extends AppCompatActivity implements FoodDetailL
         }
         else
         {
-            FoodRepository.getFood(binding.getRoot(), this::onGetFood, this.foodId, 1);
+            FoodRepository.getFood(binding.getRoot(), this::onGetFood, this.foodId, 3);
         }
     }
 
     private void setToolbar(){
-        setSupportActionBar(binding.toolbarFoodDetail);
+        setSupportActionBar(binding.toolbarFoodDetailNutrition);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
@@ -71,25 +69,17 @@ public class FoodDetailActivity extends AppCompatActivity implements FoodDetailL
 
     @Override
     public void onGetFood(Food food) {
-        binding.tvDetailName.setText(food.getName());
-        binding.tvDetailDescription.setText(food.getDescription());
-        binding.tvDetailHistory.setText(food.getHistory());
-        binding.tvDetailCulture.setText(food.getCulture());
+        MakeAdapter makeAdapter = new MakeAdapter(food.getNutritions());
+        binding.rvFoodNutritions.setLayoutManager(new GridLayoutManager(getApplicationContext(), 1, GridLayoutManager.VERTICAL, false));
+        binding.rvFoodNutritions.setAdapter(makeAdapter);
 
-        ImageAdapter imageAdapter = new ImageAdapter(food.getPicture());
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this , 1, GridLayoutManager.HORIZONTAL, false);
-        binding.imageRecyclerView.setLayoutManager(gridLayoutManager);
-        binding.imageRecyclerView.setAdapter(imageAdapter);
-
-        binding.imgBtnNextDetail.setOnClickListener(new View.OnClickListener() {
+        binding.imgBtnNextDetailNutrition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ActivityOptions options = ActivityOptions.makeCustomAnimation(binding.getRoot().getContext(), R.anim.slide_in_left, R.anim.slide_out_right);
-                Intent intent = new Intent(view.getContext(), FoodDetailMakeActivity.class);
-                intent.putExtra(StorageConstStatus.EXTRA_FOOD_ID, food.getId());
-                view.getContext().startActivity(intent, options.toBundle());
+                Intent intent = new Intent(binding.getRoot().getContext(), MainActivity.class);
+                startActivity(intent, options.toBundle());
             }
         });
-
     }
 }

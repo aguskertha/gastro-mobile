@@ -17,18 +17,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/splash_screen" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:fontFamily="@font/chango"
-        android:text="Gapulo"
-        android:textAlignment="center"
-        android:textColor="#CACACA"
-        android:textSize="70sp"
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_marginTop="64dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/gapulo_logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
