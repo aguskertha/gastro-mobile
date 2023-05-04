@@ -14,6 +14,34 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="24dp">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_food"
+            android:layout_width="0dp"
+            android:layout_height="190dp"
+            android:background="@drawable/background_image"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_food"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@android:drawable/ic_dialog_info"
+                app:civ_border_color="#FF000000"
+                app:civ_border_width="1dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <Button
             android:id="@+id/btn_food_detail"
             android:layout_width="wrap_content"
@@ -45,32 +73,18 @@
             app:layout_constraintStart_toStartOf="@+id/tv_food_name"
             app:layout_constraintTop_toBottomOf="@+id/tv_food_name" />
 
-        <ImageView
-            android:id="@+id/img_food"
-            android:layout_width="0dp"
-            android:layout_height="190dp"
-            android:adjustViewBounds="true"
-            android:background="@drawable/round_corner_grid"
-            android:padding="8dp"
-            android:scaleType="fitXY"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/avatars"></ImageView>
-
 
         <TextView
             android:id="@+id/tv_food_name"
             style="@style/Widget.AppCompat.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:fontFamily="@font/nunito_bold"
             android:text="-"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/img_food"
-            app:layout_constraintStart_toStartOf="@+id/img_food"
-            app:layout_constraintTop_toBottomOf="@+id/img_food" />
+            app:layout_constraintEnd_toEndOf="@+id/cl_food"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_food" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
