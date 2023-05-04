@@ -20,7 +20,7 @@
         <entry key="..\:/AndroidStudioFile/GastroMobile/app/src/main/res/layout/activity_food_detail_nutrition.xml" value="0.1721014492753623" />
         <entry key="..\:/AndroidStudioFile/GastroMobile/app/src/main/res/layout/activity_food_list.xml" value="0.184375" />
         <entry key="..\:/AndroidStudioFile/GastroMobile/app/src/main/res/layout/activity_main.xml" value="0.38375973303670746" />
-        <entry key="..\:/AndroidStudioFile/GastroMobile/app/src/main/res/layout/activity_result_predict.xml" value="0.22" />
+        <entry key="..\:/AndroidStudioFile/GastroMobile/app/src/main/res/layout/activity_result_predict.xml" value="0.3333333333333333" />
         <entry key="..\:/AndroidStudioFile/GastroMobile/app/src/main/res/layout/activity_splash_screen.xml" value="0.16666666666666666" />
         <entry key="..\:/AndroidStudioFile/GastroMobile/app/src/main/res/layout/carousel_item.xml" value="0.22" />
         <entry key="..\:/AndroidStudioFile/GastroMobile/app/src/main/res/layout/fragment_camera_preview.xml" value="0.15760869565217392" />
@@ -34,6 +34,7 @@
         <entry key="..\:/AndroidStudioFile/GastroMobile/app/src/main/res/layout/grid_ingridient_item.xml" value="0.5" />
         <entry key="..\:/AndroidStudioFile/GastroMobile/app/src/main/res/layout/grid_item_layout.xml" value="0.1721014492753623" />
         <entry key="..\:/AndroidStudioFile/GastroMobile/app/src/main/res/layout/grid_make_item.xml" value="0.3333333333333333" />
+        <entry key="..\:/AndroidStudioFile/GastroMobile/app/src/main/res/layout/grid_related_image.xml" value="0.4466666666666667" />
         <entry key="..\:/AndroidStudioFile/GastroMobile/app/src/main/res/layout/layout_food_list.xml" value="0.184375" />
         <entry key="..\:/AndroidStudioFile/GastroMobile/app/src/main/res/layout/layout_home_carousel.xml" value="0.1721014492753623" />
         <entry key="..\:/AndroidStudioFile/GastroMobile/app/src/main/res/layout/layout_ingredient.xml" value="0.7333333333333334" />

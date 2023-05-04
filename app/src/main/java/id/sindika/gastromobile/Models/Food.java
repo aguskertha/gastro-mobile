@@ -15,6 +15,7 @@ public class Food implements Parcelable{
     private String foodCode;
     private String name;
     private List<String> picture;
+    private List<String> base64;
     private String link;
     private String description;
     private String history;
@@ -32,6 +33,7 @@ public class Food implements Parcelable{
         foodCode = in.readString();
         name = in.readString();
         picture = in.createStringArrayList();
+        base64 = in.createStringArrayList();
         link = in.readString();
         description = in.readString();
         history = in.readString();
@@ -65,6 +67,7 @@ public class Food implements Parcelable{
         parcel.writeString(foodCode);
         parcel.writeString(name);
         parcel.writeStringList(picture);
+        parcel.writeStringList(base64);
         parcel.writeString(link);
         parcel.writeString(description);
         parcel.writeString(history);
@@ -185,5 +188,13 @@ public class Food implements Parcelable{
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public List<String> getBase64() {
+        return base64;
+    }
+
+    public void setBase64(List<String> base64) {
+        this.base64 = base64;
     }
 }

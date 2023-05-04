@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".ResultPredict.ResultPredictActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_related_predict"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_result_food"
         android:layout_width="match_parent"
@@ -27,7 +38,7 @@
         android:id="@+id/btn_start_gastronomy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/round_corner_grid"
         android:paddingLeft="24dp"
         android:paddingTop="2dp"
@@ -38,13 +49,12 @@
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/tv_result_food_description"
-        app:layout_constraintStart_toStartOf="@+id/tv_result_food_description"
         app:layout_constraintTop_toBottomOf="@+id/tv_result_food_description" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_result_predict"
         android:layout_width="0dp"
-        android:layout_height="300dp"
+        android:layout_height="200dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         app:civ_border_color="#FF000000"
@@ -75,12 +85,24 @@
         android:ellipsize="end"
         android:fontFamily="@font/nunito_semibold"
         android:lineSpacingExtra="5dp"
-        android:maxLines="5"
+        android:maxLines="4"
         android:text="-"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/img_result_predict"
         app:layout_constraintStart_toStartOf="@+id/img_result_predict"
         app:layout_constraintTop_toBottomOf="@+id/tv_result_food_name" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Related Foods"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_result_food_description"
+        app:layout_constraintStart_toStartOf="@+id/tv_result_food_description"
+        app:layout_constraintTop_toBottomOf="@+id/btn_start_gastronomy" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

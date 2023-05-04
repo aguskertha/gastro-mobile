@@ -1,6 +1,7 @@
 package id.sindika.gastromobile.ResultPredict;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
@@ -11,17 +12,21 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import java.util.List;
+
 import id.sindika.gastromobile.API.APIConfig;
 import id.sindika.gastromobile.Food.FoodDetailActivity;
+import id.sindika.gastromobile.Food.ImageAdapter;
 import id.sindika.gastromobile.MainActivity;
 import id.sindika.gastromobile.Models.Food;
+import id.sindika.gastromobile.Models.Request.MultipleFoodsDTO;
 import id.sindika.gastromobile.R;
 import id.sindika.gastromobile.Utils.StorageConstStatus;
 import id.sindika.gastromobile.databinding.ActivityMainBinding;
 import id.sindika.gastromobile.databinding.ActivityResultPredictBinding;
 import id.sindika.gastromobile.databinding.FragmentSearchBinding;
 
-public class ResultPredictActivity extends AppCompatActivity {
+public class ResultPredictActivity extends AppCompatActivity implements MultipleFoodsListener {
 
     private ActivityResultPredictBinding binding;
     private Food food;
@@ -68,6 +73,8 @@ public class ResultPredictActivity extends AppCompatActivity {
     }
 
     private void fillData(){
+        MultipleFoodsDTO multipleFoodsDTO = new MultipleFoodsDTO(food.getBase64());
+        ResultPredictRepository.getMultipleFoods(binding.getRoot(), multipleFoodsDTO, this::onMultipleFoods);
         Glide.with(binding.getRoot().getContext())
                 .load(APIConfig.BASE_IMAGE_URL+food.getPicture().get(0))
                 .centerCrop()
@@ -88,5 +95,13 @@ public class ResultPredictActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onMultipleFoods(List<Food> foods) {
 
+        ResultPredictAdapter resultPredictAdapter = new ResultPredictAdapter(foods);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this , 1, GridLayoutManager.HORIZONTAL, false);
+        binding.rvRelatedPredict.setLayoutManager(gridLayoutManager);
+        binding.rvRelatedPredict.setAdapter(resultPredictAdapter);
+
+    }
 }
