@@ -73,7 +73,7 @@ public class FoodDetailNutritionActivity extends AppCompatActivity implements Fo
         binding.rvFoodNutritions.setLayoutManager(new GridLayoutManager(getApplicationContext(), 1, GridLayoutManager.VERTICAL, false));
         binding.rvFoodNutritions.setAdapter(makeAdapter);
 
-        binding.imgBtnNextDetailNutrition.setOnClickListener(new View.OnClickListener() {
+        binding.flNextDetailNutrition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ActivityOptions options = ActivityOptions.makeCustomAnimation(binding.getRoot().getContext(), R.anim.slide_in_left, R.anim.slide_out_right);

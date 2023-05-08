@@ -81,7 +81,7 @@ public class FoodDetailActivity extends AppCompatActivity implements FoodDetailL
         binding.imageRecyclerView.setLayoutManager(gridLayoutManager);
         binding.imageRecyclerView.setAdapter(imageAdapter);
 
-        binding.imgBtnNextDetail.setOnClickListener(new View.OnClickListener() {
+        binding.flNextDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ActivityOptions options = ActivityOptions.makeCustomAnimation(binding.getRoot().getContext(), R.anim.slide_in_left, R.anim.slide_out_right);

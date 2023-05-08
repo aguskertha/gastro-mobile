@@ -84,7 +84,7 @@ public class FoodDetailMakeActivity extends YouTubeBaseActivity implements FoodD
     }
 
     private void fillData(){
-        binding.imgBtnNextDetailMake.setImageResource(R.drawable.ic_arrow_fat_lines_right);
+//        binding.imgBtnNextDetailMake.setImageResource(R.drawable.ic_arrow_fat_lines_right);
         binding.imgUnderlineHowtomake.setImageResource(R.drawable.underline);
         binding.imgUnderlineIngredient.setImageResource(R.drawable.underline);
     }
@@ -100,7 +100,7 @@ public class FoodDetailMakeActivity extends YouTubeBaseActivity implements FoodD
         binding.rvFoodMakes.setLayoutManager(new GridLayoutManager(getApplicationContext(), 1, GridLayoutManager.VERTICAL, false));
         binding.rvFoodMakes.setAdapter(makeAdapter);
 
-        binding.imgBtnNextDetailMake.setOnClickListener(new View.OnClickListener() {
+        binding.flNextDetailMake.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ActivityOptions options = ActivityOptions.makeCustomAnimation(binding.getRoot().getContext(), R.anim.slide_in_left, R.anim.slide_out_right);
